@@ -69,15 +69,17 @@ const Navbar = () => {
       {/* mobile menu */}
       <div
         onClick={() => setOpen(!open)}
-        className="sm:hidden text-2xl cursor-pointer"
+        className={`sm:hidden text-2xl cursor-pointer ${
+          isScroll ? "text-black" : ""
+        }`}
       >
         {open ? (
-          <ul className="absolute top-12 right-12 bg-white text-black p-8 space-y-2 rounded text-base">
+          <ul className="absolute top-16 right-12 bg-gray-400 backdrop-blur-[2px] p-8 space-y-2 rounded text-base">
             {navLinks.map((item, index) => (
               <NavLink
                 to={item.path}
                 key={index}
-                className="ml-6 block hover:bg-sky-600 transition-all duration-300 px-2 py-1 rounded"
+                className=" block  px-4 py-2 rounded transition-all transform duration-200 hover:border-b-1"
               >
                 {item.name}
               </NavLink>

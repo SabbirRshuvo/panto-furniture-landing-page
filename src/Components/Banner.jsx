@@ -27,7 +27,7 @@ const Banner = () => {
         </div>
         {/* hover color section */}
 
-        <div className="absolute bottom-20">
+        <div className="absolute bottom-24 left-8">
           <div className="relative group flex items-center justify-center h-20">
             {/* hidden color section */}
             <div className="absolute top-[-10px] opacity-0 flex gap-2 group-hover:opacity-100 transition-opacity duration-300">
