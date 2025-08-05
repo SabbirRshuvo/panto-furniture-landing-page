@@ -37,7 +37,9 @@ const Navbar = () => {
       {/* logo */}
       <Link to="/">
         <h2
-          className={`text-2xl font-semibold   ${isScroll ? "text-black" : ""}`}
+          className={`lg:text-2xl md:text-xl font-semibold   ${
+            isScroll ? "text-black" : ""
+          }`}
         >
           Panto
         </h2>
