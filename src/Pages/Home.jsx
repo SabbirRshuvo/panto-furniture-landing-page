@@ -1,4 +1,5 @@
 import Banner from "../Components/Banner";
+import BestSelling from "../Components/BestSelling";
 import ChooseUs from "../Components/ChooseUs";
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
     <div>
       <Banner />
       <ChooseUs />
+      <BestSelling />
     </div>
   );
 };
