@@ -5,6 +5,7 @@ import Furniture from "../Pages/Furniture";
 import Shop from "../Pages/Shop";
 import AboutUs from "../Pages/AboutUs";
 import Contact from "../Pages/Contact";
+import Cart from "../Pages/Cart";
 
 const routes = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const routes = createBrowserRouter([
       { path: "/shop", element: <Shop /> },
       { path: "/about-us", element: <AboutUs /> },
       { path: "/contact", element: <Contact /> },
+      { path: "/cart", element: <Cart /> },
     ],
   },
 ]);

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { CiMenuBurger } from "react-icons/ci";
 import { FaCartShopping } from "react-icons/fa6";
-import { NavLink } from "react-router";
+import { IoMdClose } from "react-icons/io";
+import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
   const navLinks = [
@@ -9,26 +11,82 @@ const Navbar = () => {
     { name: "About Us", path: "/about-us" },
     { name: "Contact", path: "/contact" },
   ];
+
+  const [open, setOpen] = useState(false);
+  const [isScroll, setIsScroll] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScroll(true);
+      } else {
+        setIsScroll(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
-    <div className="max-w-screen-2xl mx-auto flex justify-between items-center z-10">
+    <div
+      className={`flex  z-50 top-0 left-0 right-0 items-center justify-between fixed lg:px-20 md:px-16 p-8 py-4 text-white transition-all transform duration-500 ${
+        isScroll ? "bg-white text-black" : ""
+      }`}
+    >
       {/* logo */}
-      <div>
-        <h2 className="text-2xl font-semibold">Panto</h2>
-      </div>
+      <Link to="/">
+        <h2
+          className={`text-2xl font-semibold   ${isScroll ? "text-black" : ""}`}
+        >
+          Panto
+        </h2>
+      </Link>
       {/* links */}
-      <ul className="flex">
+      <ul className={`sm:flex hidden ${isScroll ? "text-black" : ""}`}>
         {navLinks.map((item, index) => (
-          <NavLink to={item.path} key={index} className="ml-6">
+          <NavLink
+            to={item.path}
+            key={index}
+            className="ml-6  hover:border-b-2 transition-all transform duration-500"
+          >
             {item.name}
           </NavLink>
         ))}
       </ul>
       {/* cart icon */}
-      <div className="relative">
-        <div className="text-2xl ">
+      <Link
+        to="/cart"
+        className={`relative sm:flex hidden ${isScroll ? "text-black" : ""}`}
+      >
+        <div className="text-2xl w-8 h-8 ">
           <FaCartShopping />
         </div>
-        <span className="absolute bottom-2 left-4">0</span>
+        <span className=" bottom-4 left-4 bg-amber-500 absolute px-1 rounded-full">
+          0
+        </span>
+      </Link>
+      {/* mobile menu */}
+      <div
+        onClick={() => setOpen(!open)}
+        className="sm:hidden text-2xl cursor-pointer"
+      >
+        {open ? (
+          <ul className="absolute top-12 right-12 bg-white text-black p-8 space-y-2 rounded text-base">
+            {navLinks.map((item, index) => (
+              <NavLink
+                to={item.path}
+                key={index}
+                className="ml-6 block hover:bg-sky-600 transition-all duration-300 px-2 py-1 rounded"
+              >
+                {item.name}
+              </NavLink>
+            ))}
+          </ul>
+        ) : (
+          ""
+        )}
+        {open ? <IoMdClose /> : <CiMenuBurger />}
       </div>
     </div>
   );
