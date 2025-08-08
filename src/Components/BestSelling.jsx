@@ -55,53 +55,36 @@ const BestSelling = () => {
 
   const categories = [...new Set(products.map((p) => p.category))];
 
-  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
+  const [selectedProduct, setSelectedProduct] = useState(categories[0]);
 
-  const filteredProducts = products.filter(
-    (product) => product.category === selectedCategory
+  const filteredProduct = products.filter(
+    (product) => product.category === selectedProduct
   );
 
   return (
-    <div className="lg:my-20 md:my-16 sm:my-12 my-8 bg-gray-200 h-screen py-10">
-      <div className="text-center py-4">
-        <h2 className="lg:text-4xl md:text-3xl sm:text-2xl text-xl font-semibold">
-          Best Selling Product
-        </h2>
-      </div>
-      <div className="flex flex-wrap gap-3 mb-6">
+    <div className="bg-gray-200 h-[500px]">
+      <h2 className="text-center pt-10 lg:text-4xl md:text-3xl text-2xl  font-semibold ">
+        Best Selling Product
+      </h2>
+      <div className="text-center my-10 flex gap-4 items-center justify-center">
+        {/* category section */}
+
         {categories.map((category) => (
           <button
-            key={category}
-            onClick={() => setSelectedCategory(category)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition ${
-              selectedCategory === category
-                ? "bg-black text-white"
-                : "bg-gray-200 text-black hover:bg-gray-300"
-            }`}
+            onClick={() => setSelectedProduct(category)}
+            key={category.id}
           >
             {category}
           </button>
         ))}
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        {filteredProducts.map((product) => (
-          <div
-            key={product.id}
-            className="bg-white shadow-md rounded-lg overflow-hidden"
-          >
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full h-32 object-cover"
-              loading="lazy"
-            />
-            <div className="p-3">
-              <h4 className="text-sm font-semibold">{product.name}</h4>
-              <p className="text-xs text-gray-500">{product.category}</p>
-            </div>
-          </div>
+      <div>
+        {/* products section */}
+        {filteredProduct.map((product) => (
+          <p key={product.id}>{product.name}</p>
         ))}
       </div>
+      <div>{/* all products section */}</div>
     </div>
   );
 };
