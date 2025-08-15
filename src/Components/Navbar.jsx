@@ -76,7 +76,7 @@ const Navbar = () => {
         }`}
       >
         {open ? (
-          <ul className="absolute top-16 right-12 bg-gray-400 backdrop-blur-[2px] p-8 space-y-2 rounded text-base">
+          <ul className="fixed top-0 left-0 w-full h-screen bg-white text-black flex flex-col items-center justify-center gap-8">
             {navLinks.map((item, index) => (
               <NavLink
                 to={item.path}
