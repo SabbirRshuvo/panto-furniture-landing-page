@@ -71,17 +71,21 @@ const Navbar = () => {
       {/* mobile menu */}
       <div
         onClick={() => setOpen(!open)}
-        className={`sm:hidden text-2xl cursor-pointer ${
+        className={`sm:hidden text-2xl cursor-pointer  ${
           isScroll ? "text-black" : ""
         }`}
       >
         {open ? (
-          <ul className="fixed top-0 left-0 w-full h-screen bg-white text-black flex flex-col items-center justify-center gap-8">
+          <ul
+            className={`fixed top-16 left-0 w-full h-screen bg-gray-800 bg-opacity-80 flex flex-col items-center justify-center text-white transition-transform transform  gap-4 ${
+              open ? "translate-x-0" : "-translate-x-full"
+            }`}
+          >
             {navLinks.map((item, index) => (
               <NavLink
                 to={item.path}
                 key={index}
-                className=" block  px-4 py-2 rounded transition-all transform duration-200 hover:border-b-1"
+                className=" block  px-4 py-2 rounded text-sm transition-all transform duration-200 hover:bg-gray-300 hover:text-black w-1/2 text-center"
               >
                 {item.name}
               </NavLink>

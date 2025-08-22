@@ -1,5 +1,7 @@
 import { FaSearch } from "react-icons/fa";
 import banner from "../assets/banner.png";
+import { CiDark, CiLight } from "react-icons/ci";
+
 const Banner = () => {
   return (
     <div
@@ -39,6 +41,12 @@ const Banner = () => {
             {/* bg section */}
             <div className="bg-gray-300  w-10 h-10 rounded-full" />
           </div>
+        </div>
+        {/* theme toggler */}
+        <div className="absolute bottom-32 right-16 flex items-center gap-4">
+          <button className="text-4xl text-gray-200 hover:text-gray-400 transition-colors duration-300">
+            {" "}
+          </button>
         </div>
       </div>
     </div>

@@ -1,13 +1,13 @@
 import Banner from "../Components/Banner";
-import BestSelling from "../Components/BestSelling";
 import ChooseUs from "../Components/ChooseUs";
+import Products from "../Components/Products";
 
 const Home = () => {
   return (
     <div>
       <Banner />
       <ChooseUs />
-      <BestSelling />
+      <Products headline="What your choice" />
     </div>
   );
 };
