@@ -1,7 +1,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 import { Pagination } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import { reviews } from "../utility/reviwes";
 import Rating from "./Rating";
 const Testimonials = () => {
@@ -23,6 +25,7 @@ const Testimonials = () => {
           pagination={{
             clickable: true,
           }}
+          navigation={true}
           breakpoints={{
             640: {
               slidesPerView: 1,
@@ -37,7 +40,7 @@ const Testimonials = () => {
               spaceBetween: 20,
             },
           }}
-          modules={[Pagination]}
+          modules={[Pagination, Navigation]}
           className="mySwiper"
         >
           {reviews.map((review, index) => (
