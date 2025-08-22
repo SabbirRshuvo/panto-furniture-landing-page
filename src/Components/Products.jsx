@@ -42,7 +42,7 @@ const Products = ({ headline }) => {
           </div>
         </div>
         {/* products grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4  mx-auto max-w-screen-2xl">
           {filteredProducts.slice(0, visibleProducts).map((product, index) => (
             <ProductCart key={index} product={product} />
           ))}

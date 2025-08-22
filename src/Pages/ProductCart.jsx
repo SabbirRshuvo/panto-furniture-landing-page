@@ -5,9 +5,13 @@ import { FiPlus } from "react-icons/fi";
 
 const ProductCart = ({ product }) => {
   return (
-    <div>
+    <div className="">
       <div className="bg-[#FAFAFA] ">
-        <img src={getImgUrl(`${product.imageUrl}`)} alt="" />
+        <img
+          className="w-10/12 mx-auto pt-6"
+          src={getImgUrl(`${product.imageUrl}`)}
+          alt=""
+        />
       </div>
       <div className="p-6 bg-white dark:bg-black shadow-sm">
         <h4 className="text-base mb-1">{product.category}</h4>
