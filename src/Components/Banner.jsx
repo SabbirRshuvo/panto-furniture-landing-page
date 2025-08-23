@@ -1,8 +1,12 @@
 import { FaSearch } from "react-icons/fa";
 import banner from "../assets/banner.png";
 import { CiDark, CiLight } from "react-icons/ci";
+import { useContext } from "react";
+import { ThemeContext } from "../Context/ThemeController";
 
 const Banner = () => {
+  const { isDark, toggleTheme } = useContext(ThemeContext);
+  console.log(isDark);
   return (
     <div
       className="bg-cover bg-center h-screen relative flex justify-center items-center"
@@ -44,8 +48,12 @@ const Banner = () => {
         </div>
         {/* theme toggler */}
         <div className="absolute bottom-32 right-16 flex items-center gap-4">
-          <button className="text-4xl text-gray-200 hover:text-gray-400 transition-colors duration-300">
+          <button
+            onClick={toggleTheme}
+            className="text-4xl text-gray-200 hover:text-gray-400 transition-colors duration-300 cursor-pointer"
+          >
             {" "}
+            {isDark ? <CiLight /> : <CiDark />}
           </button>
         </div>
       </div>

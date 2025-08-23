@@ -1,13 +1,16 @@
 import { Outlet } from "react-router";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
+import { ThemeProvider } from "../Context/ThemeController";
 
 const Main = () => {
   return (
     <div className="">
-      <Navbar />
-      <Outlet />
-      <Footer />
+      <ThemeProvider>
+        <Navbar />
+        <Outlet />
+        <Footer />
+      </ThemeProvider>
     </div>
   );
 };

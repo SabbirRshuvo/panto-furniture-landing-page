@@ -10,3 +10,7 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+.dark {
+  @apply bg-gray-900 text-gray-200;
+}
