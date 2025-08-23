@@ -6,7 +6,7 @@ import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
   const navLinks = [
-    { name: "Furniture", path: "/furniture" },
+    { name: "Furniture", path: "/" },
     { name: "Shop", path: "/shop" },
     { name: "About Us", path: "/about-us" },
     { name: "Contact", path: "/contact" },
@@ -14,6 +14,10 @@ const Navbar = () => {
 
   const [open, setOpen] = useState(false);
   const [isScroll, setIsScroll] = useState(false);
+
+  const blackText = ["/about-us", "/contact"];
+
+  const isBlackText = blackText.includes(location.pathname);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,72 +34,75 @@ const Navbar = () => {
   }, []);
   return (
     <div
-      className={`flex  z-50 top-0 left-0 right-0 items-center justify-between fixed lg:px-20 md:px-16 p-8 py-4 text-white transition-all transform duration-500 ${
-        isScroll ? "bg-white text-black" : ""
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-16 lg:px-20 py-4 transition-all duration-300 
+    ${
+      isScroll
+        ? "bg-white text-black shadow"
+        : isBlackText
+        ? "bg-transparent text-black"
+        : "bg-transparent text-white"
+    }`}
     >
-      {/* logo */}
+      {/* Logo */}
       <Link to="/">
-        <h2
-          className={`lg:text-2xl md:text-xl font-semibold   ${
-            isScroll ? "text-black" : ""
-          }`}
-        >
-          Panto
-        </h2>
+        <h2 className="text-xl md:text-2xl font-bold tracking-wide">Panto</h2>
       </Link>
-      {/* links */}
-      <ul className={`sm:flex hidden ${isScroll ? "text-black" : ""}`}>
+
+      {/* Desktop menu */}
+      <ul className="hidden sm:flex gap-6 font-medium">
         {navLinks.map((item, index) => (
           <NavLink
             to={item.path}
             key={index}
-            className="ml-6  hover:border-b-2 transition-all transform duration-500"
+            className={({ isActive }) =>
+              `hover:border-b-2 border-current transition-all duration-300 ${
+                isActive ? "font-semibold" : ""
+              }`
+            }
           >
             {item.name}
           </NavLink>
         ))}
       </ul>
-      {/* cart icon */}
-      <Link
-        to="/cart"
-        className={`relative sm:flex hidden ${isScroll ? "text-black" : ""}`}
-      >
-        <div className="text-2xl w-8 h-8 ">
-          <FaCartShopping />
-        </div>
-        <span className=" bottom-4 left-4 bg-amber-500 absolute px-1 rounded-full">
+
+      {/* Cart */}
+      <Link to="/cart" className="hidden sm:flex relative">
+        <FaCartShopping className="text-2xl" />
+        <span className="absolute -top-2 -right-2 bg-amber-500 text-xs text-white px-1 rounded-full">
           0
         </span>
       </Link>
-      {/* mobile menu */}
+
+      {/* Mobile menu toggle */}
       <div
         onClick={() => setOpen(!open)}
-        className={`sm:hidden text-2xl cursor-pointer  ${
-          isScroll ? "text-black" : ""
-        }`}
+        className="sm:hidden text-2xl cursor-pointer"
       >
-        {open ? (
-          <ul
-            className={`fixed top-16 left-0 w-full h-screen bg-gray-800 bg-opacity-80 flex flex-col items-center justify-center text-white transition-transform transform  gap-4 ${
-              open ? "translate-x-0" : "-translate-x-full"
-            }`}
-          >
-            {navLinks.map((item, index) => (
-              <NavLink
-                to={item.path}
-                key={index}
-                className=" block  px-4 py-2 rounded text-sm transition-all transform duration-200 hover:bg-gray-300 hover:text-black w-1/2 text-center"
-              >
-                {item.name}
-              </NavLink>
-            ))}
-          </ul>
-        ) : (
-          ""
-        )}
         {open ? <IoMdClose /> : <CiMenuBurger />}
       </div>
+
+      {/* Mobile menu */}
+      {open && (
+        <ul className="absolute top-16 left-0 w-full bg-white text-black flex flex-col items-center gap-4 py-6 shadow-md sm:hidden transition-all duration-300">
+          {navLinks.map((item, index) => (
+            <NavLink
+              to={item.path}
+              key={index}
+              onClick={() => setOpen(false)}
+              className="block w-full text-center py-2 hover:bg-gray-200 rounded"
+            >
+              {item.name}
+            </NavLink>
+          ))}
+          <Link
+            to="/cart"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-2 py-2 hover:bg-gray-200 rounded w-full justify-center"
+          >
+            <FaCartShopping /> <span>Cart (0)</span>
+          </Link>
+        </ul>
+      )}
     </div>
   );
 };
