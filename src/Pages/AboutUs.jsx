@@ -7,7 +7,7 @@ const AboutUs = () => {
         className="pt-20 bg-cover bg-center bg-no-repeat h-[600px] flex justify-center items-center text-4xl font-bold text-white "
         style={{ backgroundImage: `url(${aboutBg})` }}
       >
-        <h2>About Us</h2>
+        <h2 className="underline ">Contact Us</h2>
       </div>
       <Experiences />
     </>
