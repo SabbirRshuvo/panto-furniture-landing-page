@@ -70,12 +70,12 @@ const Navbar = () => {
       </ul>
 
       {/* Cart */}
-      <Link to="/cart" className="hidden sm:flex relative">
+      <button className="hidden sm:flex relative">
         <FaCartShopping className="text-2xl" />
         <span className="absolute -top-2 -right-2 bg-amber-500 text-xs text-white px-1 rounded-full">
           {cartCount}
         </span>
-      </Link>
+      </button>
 
       {/* Mobile menu toggle */}
       <div
@@ -98,13 +98,12 @@ const Navbar = () => {
               {item.name}
             </NavLink>
           ))}
-          <Link
-            to="/cart"
+          <button
             onClick={() => setOpen(false)}
             className="flex items-center gap-2 py-2 hover:bg-gray-200 rounded w-full justify-center"
           >
             <FaCartShopping /> <span>Cart {cartCount}</span>
-          </Link>
+          </button>
         </ul>
       )}
     </div>
