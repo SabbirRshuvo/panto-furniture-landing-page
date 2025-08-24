@@ -4,7 +4,7 @@ A fully responsive Furniture Landing Page built with React, Tailwind CSS, and Co
 Users can explore products, view details, and add them to the cart with a smooth experience.
 
 ## 🚀 Live Demo
-👉 [Panto Furniture Landing Page](https://radiant-kulfi-7f1855.netlify.app/)
+👉 [Panto Furniture Landing Page](https://panto-furniture-landing-page.netlify.app/)
 
 ✨ Features
 
