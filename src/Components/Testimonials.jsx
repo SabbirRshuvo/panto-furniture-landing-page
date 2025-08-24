@@ -59,8 +59,10 @@ const Testimonials = () => {
                     className="size-20 absolute -top-10 left-1/2 -translate-x-1/2 ring-2 ring-yellow-400 rounded-full"
                   />
                   <div className="mt-16 text-center">
-                    <h3 className="text-lg font-semibold ">{review.name}</h3>
-                    <p className="mb-3 ">Verified Customer</p>
+                    <h3 className="text-lg font-semibold dark:text-black">
+                      {review.name}
+                    </h3>
+                    <p className="mb-3 dark:text-black">Verified Customer</p>
                     <p className="text-gray-500  mb-4">{review.review}</p>
                     <div className="w-full mx-auto mb-2 flex items-center justify-center text-center">
                       <Rating rating={review.rating} />

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CiMenuBurger } from "react-icons/ci";
 import { FaCartShopping } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
 import { Link, NavLink } from "react-router";
+import { CartContext } from "../Context/CartContext";
 
 const Navbar = () => {
   const navLinks = [
@@ -32,6 +33,9 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const { cartCount } = useContext(CartContext);
+  console.log(cartCount);
   return (
     <div
       className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-16 lg:px-20 py-4 transition-all duration-300 
@@ -69,7 +73,7 @@ const Navbar = () => {
       <Link to="/cart" className="hidden sm:flex relative">
         <FaCartShopping className="text-2xl" />
         <span className="absolute -top-2 -right-2 bg-amber-500 text-xs text-white px-1 rounded-full">
-          0
+          {cartCount}
         </span>
       </Link>
 
@@ -99,7 +103,7 @@ const Navbar = () => {
             onClick={() => setOpen(false)}
             className="flex items-center gap-2 py-2 hover:bg-gray-200 rounded w-full justify-center"
           >
-            <FaCartShopping /> <span>Cart (0)</span>
+            <FaCartShopping /> <span>Cart {cartCount}</span>
           </Link>
         </ul>
       )}
